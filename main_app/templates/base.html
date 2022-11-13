@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,10 @@
   <link
     rel="shortcut icon"
     type="image/png"
-    href=""
+    href="{% static 'main_app/static/images/babby1.png' %}"
   >
-  <title>Cat Collector</title>
+  <title>Django Daycare</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   {% block head %}
   {% endblock %}
 </head>
@@ -18,8 +21,8 @@
     <div class="header-logo-container">
       <a href="/">
         <img 
-          src=""
-          alt="The Cat Collector Logo"
+          src="main_app/static/images/babby1.png"
+          alt="The Django Daycare Logo"
         >
       </a>
     </div>
