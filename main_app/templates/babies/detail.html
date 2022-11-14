@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/babies/baby-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="baby-container">
+  <div class="baby-img">
+    <img 
+      src="{% static 'main_app/static/images/baby1.png' %}" 
+      alt="A generic baby"
+    >
+  </div>
+  <div class="baby-details">
+    <h1>{{ baby.name }}</h1>
+    {% if baby.age > 0 %}
+      <h2>A {{ baby.age }} month old baby</h2>
+    {% else %}
+      <h2>A newborn</h2>
+    {% endif %}
+    <p>{{ baby.description }}</p>
+  </div>
+</section>
+
+{% endblock %}
