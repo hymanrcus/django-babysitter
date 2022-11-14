@@ -1,19 +1,6 @@
 from django.shortcuts import render
 from .models import Baby
-
-
-# class Baby:
-#   def __init__(self, name, description, age):
-#     self.name = name
-#     self.description = description
-#     self.age = age
-
-# babies = [
-#   Baby('Lolo', 'Kinda rude.', 3),
-#   Baby('Sachi', 'Looks like a turtle.', 0),
-#   Baby('Fancy', 'Happy fluff ball.', 4),
-#   Baby('Bonk', 'Meows loudly.', 6)
-# ]
+from django.views.generic.edit import CreateView
     
 
 # Create your views here.
@@ -30,3 +17,7 @@ def babies_index(request):
 def babies_detail(request, baby_id):
   baby = Baby.objects.get(id=baby_id)
   return render(request, 'babies/detail.html', { 'baby': baby })
+
+class BabyCreate(CreateView):
+  model = Baby
+  fields = '/babies/'
