@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="logo-container">
+  <div class="baby-container">
+    <img src="{% static 'main_app/static/images/baby1.png' %}" alt="The Django Daycare Baby" />
+  </div>
+  <img 
+    src="{% static 'images/logotype.svg' %}" 
+    alt="Text reads: Django Daycare"
+  />
+</section>
+
+{% endblock %}
