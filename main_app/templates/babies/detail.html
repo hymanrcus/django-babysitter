@@ -26,6 +26,10 @@
       <h2>A newborn</h2>
     {% endif %}
     <p>{{ baby.description }}</p>
+    <div class="baby-actions">
+      <a href="{% url 'babies_update' baby.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'babies_delete' baby.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
