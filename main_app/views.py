@@ -15,9 +15,10 @@ def babies_index(request):
 
 def babies_detail(request, baby_id):
   baby = Baby.objects.get(id=baby_id)
+  toys_baby_doesnt_have = Toy.objects.exclude(id__in = baby.toys.all().values_list('id'))
   feeding_form = FeedingForm()
   return render(request, 'babies/detail.html', { 
-    'baby': baby, 'feeding_form': feeding_form
+    'baby': baby, 'feeding_form': feeding_form, 'toys': toys_baby_doesnt_have
   })
 
 class BabyCreate(CreateView):
@@ -30,7 +31,7 @@ class BabyDelete(DeleteView):
   model = Baby
   success_url = '/babies/'
 
-  def add_feeding(request, baby_id):
+def add_feeding(request, baby_id):
     form = FeedingForm(request.POST)
     if form.is_valid():
       new_feeding = form.save(commit=False)
@@ -55,3 +56,7 @@ class ToyUpdate(UpdateView):
 class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
+
+def assoc_toy(request, baby_id, toy_id):
+  Baby.objects.get(id=baby_id).toys.add(toy_id)
+  return redirect('babies_detail', baby_id=baby_id)
